@@ -1,0 +1,39 @@
+<div class="jumbotron center vertical-center">
+  <h1>My Courses</h1>
+
+  <br/><br/>
+
+  <% if @faculty.courses.count > 0 %>
+
+      <table class="table">
+        <tr>
+          <th class="text-center">Name</th>
+          <th class="text-center">Semester</th>
+          <th class="text-center">Section</th>
+          <th class="text-center">Course Actions</th>
+        </tr>
+
+        <% @faculty.courses.each do |course| %>
+            <tr>
+              <td><%= course.name %></td>
+              <td> <%= course.semester %></td>
+              <td> <%= course.section %></td>
+              <td>
+                <%= link_to 'Show', course, :style => 'color:#FFFFFF;', :class => 'btn btn-primary' %>
+                <%= link_to 'Destroy', course, method: :delete, data: {confirm: 'Are you sure?'}, style: 'color:#FFFFFF', class: 'btn btn-danger' %>
+              </td>
+            </tr>
+        <% end %>
+
+      </table>
+  <% else %>
+      <h2>You have no courses yet. Click 'New Course' to create one.</h2>
+  <% end %>
+</div>
+
+<div style="float: right">
+
+  <%= link_to 'New Course', new_course_path, :style => 'color:#FFFFFF;', :class => 'btn btn-primary' %>
+
+
+</div>

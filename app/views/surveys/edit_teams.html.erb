@@ -1,0 +1,45 @@
+<div class="jumbotron center vertical-center">
+
+  <h3>Team <%= params[:team_id].to_i + 1 %></h3>
+  <br/>
+  <table class="table">
+    <tr>
+
+      <th class="text-center">Team Member</th>
+      <th class="text-center">Remove</th>
+    </tr>
+
+    <% @edited_team.students.each do |student| %>
+        <tr>
+          <td> <%= student.name %></td>
+          <td> <%= link_to 'Remove Student',
+                           course_survey_remove_student_path(student_id: student.id, team_id: @edited_team.id),
+                           style: 'color:#FFFFFF', class: 'btn btn-danger' %></td>
+        </tr>
+
+    <% end %>
+
+  </table>
+
+  <td> <%= link_to 'Save Team', course_survey_save_team_path(team_id: @edited_team.id),
+                   style: 'color: #FFFFFF', class: 'btn btn-success' %></td>
+
+</div>
+
+<div class="jumbotron center vertical-center">
+
+  <%= form_tag(course_survey_add_student_to_team_from_form_path(team_id: @edited_team.id)) %>
+
+
+  <h3>Add Student to team</h3>
+
+  <div class="col-lg-12">
+
+    <%= collection_select(:selected_student, :selected_student_email, @remainderStudents,
+                          :email, :name, include_blank: true) %>
+
+    <%= submit_tag 'Add Student', style: 'color#FFFFFF', class: 'btn btn-primary' %></div>
+  <br/>
+  <p>Use this drop down to add students to this team</p>
+
+</div>

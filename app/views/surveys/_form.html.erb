@@ -1,0 +1,107 @@
+<%= form_for ([@course, @survey]), html: {class: 'form-horizontal'} do |f| %>
+
+    <div>
+
+      <h4><br/> To create a survey enter as many courses as you'd like. You may also set up to 10 priorities for these
+        questions which will be used to build your teams.
+        <br/><br/><b> Please do not enter the same priority twice as this will cause team making to be done incorrectly
+        and may result in no teams being created.</b> <br/><br/></h4>
+      <br/>
+    </div>
+
+    <% if flash[:error] %>
+        <div id="error_explanation">
+          <% errors = flash[:error] %>
+          <h2><%= pluralize(errors.count, 'error') %> prohibited this survey from being saved:</h2>
+          <ul>
+            <% errors.each do |error, message| %>
+                <li><%= message.to_s %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <% if @survey.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@survey.errors.count, 'error') %> prohibited this survey from being saved:</h2>
+          <ul>
+            <% @survey.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :name, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-6">
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :end_date, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-6">
+        <%= f.datetime_select :end_date, class: 'form-control' %>
+      </div>
+    </div>
+
+    <br/>
+    <h2>Questions</h2>
+
+    <%= f.fields_for :gpa_question, @survey.gpa_question do |question| %>
+
+        <div class="form-group">
+          <%= question.label 'GPA', class: 'col-sm-2 control-label' %>
+          <div class="col-sm-6">
+            <%= question.text_field :content, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= question.label 'Priority', class: 'col-sm-2 control-label' %>
+          <div class="col-sm-6">
+
+            <%= question.select(:priority, Question::PRIORITIES, class: 'form-control') %>
+          </div>
+        </div>
+
+    <% end %>
+
+    <%= f.fields_for :comments_question, @survey.comments_question do |question| %>
+
+        <div class="form-group">
+          <%= question.label 'Comments', class: 'col-sm-2 control-label' %>
+          <div class="col-sm-6">
+            <%= question.text_area :content, readonly: true, class: 'form-control textarea', size: '10x5' %>
+          </div>
+        </div>
+
+    <% end %>
+
+    <br/>
+    <h3>Course Grades</h3>
+
+    <div id="course_questions">
+      <%= f.fields_for :questions do |question| %>
+          <% next if (question.object.content == @survey.gpa_question.content || question.object.content == @survey.comments_question.content) %>
+
+          <%= render 'question_fields', f: question %>
+      <% end %>
+      <br/>
+      <div id="links">
+        <%= link_to_add_association 'Add Course', f, :questions, class: 'btn btn-primary' %>
+      </div>
+    </div>
+
+    <br/>
+    <div class="actions">
+      <%= f.submit 'Submit Survey', class: 'btn btn-primary' %>
+    </div>
+
+    <br/><br/><br/>
+    <div>
+      <p><i>*A field that is read only means that it is a required question for all surveys.</i></p>
+    </div>
+
+<% end %>

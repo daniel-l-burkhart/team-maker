@@ -1,0 +1,125 @@
+<h1>Team Making Results</h1>
+
+<div class="jumbotron center vertical-center">
+
+  <h3>Teams</h3>
+
+  <table class="table">
+
+    <tr>
+      <th class="text-center">Team index</th>
+      <th colspan="4" class="text-center">Students</th>
+      <th colspan="2" class="text-center">Team Actions</th>
+    </tr>
+
+    <% @teams.each_with_index do |team, index| %>
+
+        <tr>
+
+          <% if index > $last_index %>
+
+
+              <td bgcolor="yellow"><%= index+1 %></td>
+              <% team.students.each do |student| %>
+                  <td bgcolor="yellow"><%= mail_to student.email, student.name %></td>
+              <% end %>
+
+          <% else %>
+
+              <td><%= index+1 %></td>
+              <% team.students.each do |student| %>
+                  <td><%= mail_to student.email, student.name %></td>
+
+              <% end %>
+
+          <% end %>
+          <% if team.students.size == 0 %>
+              <td></td>
+              <td></td>
+              <td>No students yet</td>
+              <td></td>
+
+          <% elsif team.students.size == 1 %>
+              <td></td>
+              <td></td>
+              <td></td>
+          <% elsif team.students.size == 2 %>
+              <td></td>
+              <td></td>
+          <% elsif team.students.size == 3 %>
+              <td></td>
+          <% end %>
+
+          <% if !team.released %>
+              <td><%= link_to 'Edit Team', course_survey_edit_team_path(team_id: index), style: 'color:#FFFFFF',
+                              class: 'btn btn-primary' %></td>
+
+              <td> <%= link_to 'Delete Team', course_survey_delete_team_path(team_id: index), style: 'color:#FFFFFF', class: 'btn btn-danger' %></td>
+
+          <% else %>
+
+              <td> <%= link_to 'Edit Team', course_survey_edit_team_path(team_id: index),
+                               disabled: true, style: 'color:#FFFFFF',
+                               class: 'btn btn-primary' %></td>
+              <td> <%= link_to 'Delete Team', course_survey_delete_team_path(team_id: index),
+                               style: 'color:#FFFFFF', class: 'btn btn-danger', disabled: true %></td>
+
+
+          <% end %>
+        </tr>
+
+    <% end %>
+
+    <% if @teams.all? {|team| !team.released} %>
+        <%= link_to 'Create New Team', course_survey_create_new_team_path, style: 'color: #FFFFFF',
+                    class: 'btn btn-primary' %><br/>
+        <%= link_to 'Release Team Information', course_survey_release_teams_path, style: 'color: #FFFFFF', class: 'btn btn-success' %>
+        <br/><br/>
+    <% else %>
+        <%= link_to 'Create New Team', course_survey_create_new_team_path,
+                    style: 'color: #FFFFFF', class: 'btn btn-primary', disabled: true %><br/>
+        <%= link_to 'Release Team Information', course_survey_release_teams_path,
+                    style: 'color: #FFFFFF', class: 'btn btn-success', disabled: true %>
+        <br/><br/>
+    <% end %>
+
+  </table>
+
+
+</div>
+
+<p><i>*If a team is highlighted, it means that team was formed through the opposite grouping option than you chose or is
+  a team you created.</i></p>
+<br/>
+<br/>
+
+<div class="jumbotron center vertical-center">
+
+  <h3>Remaining Students</h3>
+
+  <% if @remaining.size != 0 %>
+
+      <table class="table">
+
+        <tr>
+
+          <th class="text-center">Name</th>
+          <th class="text-center">Email</th>
+
+        </tr>
+
+        <% @remaining.each do |remainingStudent| %>
+            <tr>
+              <td><%= remainingStudent.name %></td>
+              <td><%= mail_to remainingStudent.email, remainingStudent.email %></td>
+            </tr>
+        <% end %>
+
+
+      </table>
+
+  <% else %>
+
+      <h3>No remaining students!</h3>
+  <% end %>
+</div>

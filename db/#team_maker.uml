@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>RailsDependency</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="149.0" y="-309.0">Administrator</node>
+    <node x="34.5" y="402.5">Survey</node>
+    <node x="520.0" y="142.5">Course</node>
+    <node x="611.0" y="544.5">Student</node>
+    <node x="924.0" y="-272.0">Faculty</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="Survey" target="Student">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Administrator" target="Faculty">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Course" target="Survey">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Course" target="Student">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Faculty" target="Administrator">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Student" target="Survey">
+      <point x="128.5" y="123.0" />
+      <point x="-90.0" y="76.0" />
+    </edge>
+    <edge source="Course" target="Faculty">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Faculty" target="Course">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="680.5" y="489.0" />
+  <SelectedNodes>
+    <node>Survey</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Migration fields</Category>
+    <Category>Association fields</Category>
+  </Categories>
+</Diagram>
+

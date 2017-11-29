@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Students</h1>
+
+<table class="table" style="text-align: center">
+  <thead>
+  <tr>
+    <th class="text-center">Name</th>
+    <th class="text-center">Phone</th>
+
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @students.each do |student| %>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.phone %></td>
+
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+

@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Answers</h1>
+
+<table class="table" style="text-align: center">
+  <thead>
+  <tr>
+    <th class="text-center">Response</th>
+    <th class="text-center">Question</th>
+    <th class="text-center">Content</th>
+    <th class="text-center" colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @answers.each do |answer| %>
+      <tr>
+        <td><%= answer.response %></td>
+        <td><%= answer.question %></td>
+        <td><%= answer.content %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Answer', new_answer_path %>

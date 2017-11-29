@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+  <%= stylesheet_link_tag 'application', media: 'all',
+                          'data-turbolinks-track' => true %>
+
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <!--[if lt IE 9]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+  </script>
+  <![endif]-->
+</head>
+<body>
+<%= render 'layouts/header' %>
+<br/>
+<div class="container">
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+</div>
+<div class="container">
+  <%= yield %>
+</div>
+
+<div id="footer">
+  <div class="container text-center">
+    <nav>
+      <ul class="nav navbar-nav navbar-center">
+        <% if administrator_signed_in? %>
+            <li><%= link_to "Home", '/admin/home' %></li>
+            <li><%= link_to "About", about_path %></li>
+            <li><%= link_to 'Profile', edit_administrator_registration_path %></li>
+
+
+        <% elsif faculty_signed_in? %>
+            <li><%= link_to "Home", '/faculty/home' %></li>
+            <li><%= link_to "About", about_path %></li>
+            <li><%= link_to 'Profile', edit_faculty_registration_path %></li>
+
+
+        <% elsif student_signed_in? %>
+            <li><%= link_to "Home", '/student/home' %></li>
+            <li><%= link_to "About", about_path %></li>
+            <li><%= link_to 'Profile', edit_student_registration_path %></li>
+
+
+        <% else %>
+            <li><%= link_to "Home", welcome_index_path %></li>
+            <li><%= link_to "About", about_path %></li>
+        <% end %>
+      </ul>
+
+    </nav>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<div class="center">
+  <h1><%= @course.name %></h1>
+</div>
+
+<div class="jumbotron center vertical-center">
+  <h2 class="center">Surveys</h2>
+  <br/>
+  <table class="table" style="text-align: center">
+
+    <tr>
+      <th class="text-center">Name</th>
+      <th class="text-center">Start Date</th>
+      <th class="text-center">End Date</th>
+      <th class="text-center">Survey Progress</th>
+      <th class="text-center" colspan="3">Survey Actions</th>
+    </tr>
+
+    <% @course.surveys.each do |survey| %>
+        <tr>
+          <td><%= survey.name %></td>
+          <td> <%= survey.start_date %></td>
+          <td> <%= survey.end_date %></td>
+          <td><%= survey.get_survey_progress %></td>
+          <% if survey.start_date.nil? %>
+              <td>
+                <%= link_to 'Edit', edit_course_survey_path(@course, survey), :style => 'color:#FFFFFF;', :class => 'btn btn-primary' %> </td>
+              <td> <%= link_to 'Release', course_survey_send_new_survey_mail_path(@course, survey), style: 'color:#FFFFFF', class: 'btn btn-success' %>
+              <td>  <%= link_to 'Destroy', course_survey_path(@course, survey), method: :delete, data: {confirm: 'Are you sure?'}, style: 'color:#FFFFFF', class: 'btn btn-danger' %> </td>
+
+          <% else %>
+
+              <td><%= link_to 'View', course_survey_path(@course, survey), style: 'color:#FFFFFF;', class: 'btn btn-primary' %></td>
+              <td>  <%= link_to 'Destroy', course_survey_path(@course, survey), method: :delete, data: {confirm: 'Are you sure?'}, style: 'color:#FFFFFF', class: 'btn btn-danger' %> </td>
+
+
+          <% end %>
+        </tr>
+    <% end %>
+
+  </table>
+</div>
+
+<%= link_to 'New Survey', new_course_survey_path(@course), :class => 'btn btn-primary', :style => 'color:#FFFFFF; float: right' %>
+
+<br/><br/>
+<br/><br/>
+<div class="jumbotron center vertical-center">
+  <h2>Students</h2><br/>
+  <table class="table">
+
+
+    <th class="text-center">Name</th>
+    <th class="text-center">Student Id</th>
+    <th class="text-center">Email</th>
+
+
+    <% @course.students.each do |student| %>
+        <tr>
+          <td><%= student.name %></td>
+          <td> <%= student.student_id %></td>
+          <td> <%= mail_to(student.email) %></td>
+        </tr>
+    <% end %>
+
+  </table>
+</div>
+<%= link_to 'Add Students', edit_course_path(@course), :class => 'btn btn-primary', :style => 'color:#FFFFFF; float: right' %>
+
+
+<br/><br/><br/>

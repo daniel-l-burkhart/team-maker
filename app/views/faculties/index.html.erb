@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Faculties</h1>
+
+<table class="table" style="text-align: center">
+  <thead>
+  <tr>
+    <th class="text-center">Name</th>
+    <th class="text-center">Phone</th>
+    <th class="text-center">Department</th>
+    <th class="text-center">University</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @faculties.each do |faculty| %>
+      <tr>
+        <td><%= faculty.name %></td>
+        <td><%= faculty.phone %></td>
+        <td><%= faculty.department %></td>
+        <td><%= faculty.university %></td>
+
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Faculty', new_faculty_path %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Courses</h1>
+
+<table class="table" style="text-align: center">
+  <thead>
+  <tr>
+    <th class="text-center">Name</th>
+    <th class="text-center">Semester</th>
+    <th class="text-center">Section</th>
+    <th class="text-center" colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.name %></td>
+        <td><%= course.semester %></td>
+        <td><%= course.section %></td>
+
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Course', new_course_path %>

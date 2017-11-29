@@ -1,0 +1,132 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="jumbotron center vertical-center">
+  <h2><%= @survey.name %></h2>
+  <table class="table" style="text-align: center">
+    <tr>
+      <td><h3>Started: <%= @survey.start_date.to_date %>  </h3></td>
+      <td><h3>Ends: <%= @survey.end_date.to_date %></h3></td>
+    </tr>
+
+  </table>
+
+  <h2>Questions</h2>
+  <table class="table" style="text-align: center">
+    <th class="text-center">Content</th>
+    <th class="text-center">Priority</th>
+
+    <% @survey.questions.reverse.each do |question| %>
+        <tr>
+
+          <td> <%= question.content %></td>
+          <td> <%= question.priority %></td>
+
+        </tr>
+
+
+    <% end %>
+  </table>
+
+  <h3>Comments</h3>
+  <table class="table" style="text-align: center; table-layout: fixed">
+    <tr>
+      <th class="text-center">Student Name</th>
+      <th class="text-center">Comment</th>
+    </tr>
+
+
+    <% @survey.questions.select {|question| question.content == Question::COMMENTS}[0].answers.each do |answer| %>
+        <tr>
+          <td><%= mail_to answer.response.student.email, answer.response.student.name %></td>
+          <td><%= answer.content %></td>
+    <% end %>
+    </tr>
+
+  </table>
+</div>
+
+
+<% if @survey.end_date <= DateTime.now || @survey.is_survey_complete? %>
+
+
+    <div class="jumbotron center vertical-center">
+
+      <h1>Survey Teams</h1> <br/>
+
+
+      <table class="table" style="text-align: center">
+
+        <th class="text-center">Team Number</th>
+        <th class="text-center">Team Members</th>
+        <th></th>
+        <th></th>
+        <th></th>
+
+        <% @survey.teams.each do |team| %>
+            <tr>
+              <td>
+                <%= team.id %>
+              </td>
+
+              <% team.students.each do |student| %>
+
+                  <td><%= student.name %></td>
+
+              <% end %>
+
+            </tr>
+
+        <% end %>
+
+      </table>
+    </div>
+
+    <div class="jumbotron center vertical-center">
+      <% if @survey.teams.size <= 0 %>
+
+
+          <%= form_tag(course_survey_create_teams_path(@course, @survey), method: :put) do %>
+
+              <h2>Team Making Criteria</h2>
+              <br/>
+              <div class="col-sm-4">
+                <%= radio_button_tag(:team_creation_preference, 'Similar') %>
+                <%= label_tag(:team_creation_preference, 'Group Similar') %>
+                <br/>
+                <%= radio_button_tag(:team_creation_preference, 'Dissimilar') %>
+                <%= label_tag(:team_creation_preference, 'Group Dissimilar') %>
+              </div>
+
+              <div class="col-sm-4">
+                <%= label_tag(:team_size, 'Team Size') %>
+                <%= select_tag(:team_size, options_for_select([2, 3, 4])) %>
+              </div>
+
+              <div class="col-sm-4">
+                <%= submit_tag 'Create Teams', class: 'btn btn-primary' %>
+              </div>
+              <br/><br/><br/>
+              <div class="col-lg-12">
+                <h3>Use these options to change how the teams are made.</h3>
+              </div>
+
+          <% end %>
+
+
+      <% else %>
+
+          <h2> Teams have already been made! To make more teams, create a new survey! </h2>
+
+      <% end %>
+    </div>
+
+
+<% else %>
+    <div class="jumbotron center vertical-center">
+
+      <h2>After the survey end date has passed or all the students have completed the survey,
+        you will be able to make teams based off their answers and the priorities you set.</h2>
+
+    </div>
+<% end %>

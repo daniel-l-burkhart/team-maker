@@ -1,0 +1,66 @@
+<div class="jumbotron center vertical-center">
+  <h2>Surveys</h2>
+
+  <br/><br/>
+
+  <table class="table" style="text-align: center">
+    <tr>
+      <th class="text-center">Name</th>
+      <th class="text-center">Course</th>
+      <th class="text-center">Start Date</th>
+      <th class="text-center">End Date</th>
+      <th class="text-center">Take Survey</th>
+    </tr>
+
+    <% @student.surveys.each_with_index do |survey, i| %>
+        <% response = @student.responses(survey_id: survey.id)[i] %>
+        <% next if (survey.start_date.nil?) %>
+        <% next if (survey.end_date <= DateTime.now) %>
+        <tr>
+          <td><%= survey.name %></td>
+          <td> <%= survey.course.name %></td>
+          <td> <%= survey.start_date %></td>
+          <td> <%= survey.end_date %></td>
+          <% if response.completed? %>
+              <td> <%= link_to 'Completed', edit_survey_response_path(survey, response), :style => 'color:#FFFFFF;', :class => 'btn btn-primary', disabled: true %></td>
+          <% else %>
+              <td> <%= link_to 'Take Survey', edit_survey_response_path(survey, response), :style => 'color:#FFFFFF;', :class => 'btn btn-primary' %></td>
+          <% end %>
+        </tr>
+    <% end %>
+
+  </table>
+
+</div>
+
+<div class="jumbotron center vertical-center">
+  <h2>My Teams</h2>
+
+  <br/>
+
+
+  <table class="table">
+    <tr>
+      <th class="text-center">Course Name</th>
+      <th class="text-center">Survey Name</th>
+      <th class="text-center" colspan="4">Team members</th>
+    </tr>
+
+
+    <% @student.teams.each do |team| %>
+        <% if team.released? %>
+            <tr>
+              <td> <%= Course.find(Survey.find(team.survey_id).course_id).name %></td>
+              <td> <%= Survey.find(team.survey_id).name %> </td>
+
+              <% team.students.each do |student| %>
+                  <td><%= mail_to(student.email, student.name) %></td>
+              <% end %>
+            </tr>
+
+        <% end %>
+
+    <% end %>
+
+  </table>
+</div>

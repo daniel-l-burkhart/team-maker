@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Responses</h1>
+
+<table class="table" style="text-align: center">
+  <thead>
+  <tr>
+    <th class="text-center">Survey</th>
+    <th class="text-center">Student</th>
+    <th class="text-center">Completed</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @responses.each do |response| %>
+      <tr>
+        <td><%= response.survey %></td>
+        <td><%= response.student %></td>
+        <td><%= response.completed %></td>
+
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>

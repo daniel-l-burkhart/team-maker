@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Questions</h1>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th class="text-center">Content</th>
+    <th class="text-center">Survey</th>
+
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.content %></td>
+        <td><%= question.survey %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>

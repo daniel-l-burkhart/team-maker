@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Surveys</h1>
+
+<table class="table" style="text-align: center">
+  <thead>
+  <tr>
+    <th class="text-center">Name</th>
+    <th class="text-center">Start date</th>
+    <th class="text-center">End date</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @surveys.each do |survey| %>
+      <tr>
+        <td><%= survey.name %></td>
+        <td><%= survey.start_date %></td>
+        <td><%= survey.end_date %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>

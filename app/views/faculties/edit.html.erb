@@ -1,0 +1,52 @@
+<h1>Approve Faculty</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+    <%= form_for(@faculty) do |f| %>
+        <% if @faculty.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@faculty.errors.count, "error") %> prohibited this faculty from being saved:</h2>
+
+              <ul>
+                <% @faculty.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+
+        <%= f.label :name %><br>
+        <%= f.text_field :name, class: 'form-control', :readonly => true %><br>
+
+        <%= f.label :phone %><br>
+        <%= f.text_field :phone, class: 'form-control', :readonly => true %><br>
+
+
+        <%= f.label :department %><br>
+        <%= f.text_field :department, class: 'form-control', :readonly => true %><br>
+
+
+
+        <%= f.label :email %><br/>
+        <%= f.email_field :email, class: 'form-control', :readonly => true %><br>
+
+
+
+        <%= f.label :university %><br>
+        <%= f.select :university, [['University of West Georgia', 'University of West Georgia']], class: 'form-control', :readonly => true %>
+        <br/>
+        <br/>
+        <%= f.label :approved %><br/>
+        <%= f.check_box :approved %>
+
+        <br/><br>
+
+        <br/>
+        <div class="center">
+          <%= f.submit 'Update Faculty', class: "btn btn-primary actions", style: "color: #FFFFFFF" %>
+        </div>
+    <% end %>
+  </div>
+</div>
+

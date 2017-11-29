@@ -1,0 +1,74 @@
+<div class="jumbotron center vertical-center">
+  <h2>Faculty Requests</h2><br/>
+  <% if @show_table %>
+      <div>
+        <%= form_for("approve_faculty") do |f| %>
+
+            <table class="table" style="text-align: center">
+              <tr>
+                <th class="text-center">Faculty Name</th>
+                <th class="text-center">Phone</th>
+                <th class="text-center">Department</th>
+                <th class="text-center">University</th>
+                <th class="text-center">Email</th>
+                <th class="text-center">Approve</th>
+              </tr>
+
+              <% @unapprovedFaculty.each do |faculty| %>
+                  <tr>
+                    <td><%= faculty.name %></td>
+                    <td> <%= faculty.phone %></td>
+                    <td> <%= faculty.department %></td>
+                    <td> <%= faculty.university %></td>
+                    <td> <%= faculty.email %></td>
+                    <td>  <%= link_to 'Click here to Approve', edit_faculty_path(faculty), :style => 'color:#FFFFFF;', :class => 'btn btn-primary' %>
+                    </td>
+                  </tr>
+              <% end %>
+
+            </table>
+            </div>
+            <br/><br/>
+        <% end %>
+  <% end %>
+
+  <% if @show_empty_message %>
+      <h3>No unapproved faculty! :) </h3>
+  <% end %>
+</div>
+
+
+<div class="jumbotron center vertical-center">
+
+  <h2>All Faculty</h2><br/>
+
+  <table class="table" style="text-align: center">
+
+    <tr>
+      <th class="text-center">Faculty Name</th>
+      <th class="text-center">Phone</th>
+      <th class="text-center">Department</th>
+      <th class="text-center">University</th>
+      <th class="text-center">Email</th>
+      <th class="text-center">Approved?</th>
+    </tr>
+
+    <% @allFaculty.each do |faculty| %>
+        <tr>
+          <td><%= faculty.name %></td>
+          <td> <%= faculty.phone %></td>
+          <td> <%= faculty.department %></td>
+          <td> <%= faculty.university %></td>
+          <td> <%= faculty.email %></td>
+
+          <% if faculty.approved? %>
+              <td> Yes</td>
+          <% else %>
+              <td> No</td>
+          <% end %>
+
+        </tr>
+    <% end %>
+  </table>
+
+</div>

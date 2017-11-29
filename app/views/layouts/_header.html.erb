@@ -1,0 +1,37 @@
+<header class="navbar navbar-inverse">
+
+  <nav class="navbar" style="margin-bottom: 0px;">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Team Maker!</a>
+      </div>
+
+      <ul class="nav navbar-nav navbar-right">
+        <% if administrator_signed_in? %>
+            <li><%= link_to "Home", '/admin/home' %></li>
+            <li><%= link_to "About", about_path %></li>
+            <li><%= link_to 'Profile', edit_administrator_registration_path %></li>
+            <li><%= link_to 'Log out', destroy_administrator_session_path %></li>
+
+        <% elsif faculty_signed_in? %>
+            <li><%= link_to "Home", '/faculty/home' %></li>
+            <li><%= link_to "About", about_path %></li>
+            <li><%= link_to 'Profile', edit_faculty_registration_path %></li>
+            <li><%= link_to 'Log out', destroy_faculty_session_path %></li>
+
+        <% elsif student_signed_in? %>
+            <li><%= link_to "Home", '/student/home' %></li>
+            <li><%= link_to "About", about_path %></li>
+            <li><%= link_to 'Profile', edit_student_registration_path %></li>
+            <li><%= link_to 'Log out', destroy_student_session_path %></li>
+
+        <% else %>
+            <li><%= link_to "Home", welcome_index_path %></li>
+            <li><%= link_to "About", about_path %></li>
+        <% end %>
+        <!--<li><%= link_to "Log in", '#' %></li> -->
+      </ul>
+    </div>
+  </nav>
+
+</header>

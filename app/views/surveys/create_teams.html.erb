@@ -1,0 +1,74 @@
+<h1>Team Making Results</h1>
+
+<div class="jumbotron center vertical-center">
+
+  <h3>Teams</h3>
+
+  <table class="table">
+
+    <tr>
+      <th class="text-center">Team Number</th>
+      <th colspan="4" class="text-center">Students</th>
+      <th class="text-center">Edit Team</th>
+    </tr>
+
+    <% @instance_teams.each_with_index do |team, index| %>
+
+        <tr id=<%= index+1 %>>
+
+          <td>Team <%= index+1 %></td>
+          <td></td>
+          <% if team.students.size == 2 %>
+
+              <% team.students.each do |student| %>
+
+                  <td> <%= mail_to student.email, student.name %> </td>
+
+              <% end %>
+
+              <td></td>
+          <% elsif team.students.size == 3 %>
+              <% team.students.each do |student| %>
+
+                  <td> <%= mail_to student.email, student.name %> </td>
+
+              <% end %>
+
+
+          <% end %>
+
+          <td><%= link_to 'Edit Team', course_survey_edit_team_path(team_id: index) %></td>
+
+    <% end %>
+    </tr>
+
+  </table>
+
+
+</div>
+
+<div class="jumbotron center vertical-center">
+
+  <h3>Remaining Students</h3>
+
+  <table class="table">
+
+    <tr>
+
+      <th class="text-center">Name</th>
+      <th class="text-center">Email</th>
+
+    </tr>
+
+    <% @remaining.each do |remainingStudent| %>
+        <td><%= remainingStudent.name %></td>
+        <td><%= mail_to remainingStudent.email, remainingStudent.email %></td>
+    <% end %>
+
+
+  </table>
+
+
+</div>
+
+<!-- Select with selected being the member that was created. -->

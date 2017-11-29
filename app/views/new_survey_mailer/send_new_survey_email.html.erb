@@ -1,0 +1,13 @@
+<html>
+<body>
+<%= yield %>
+
+<h1>Hello, <%= @student.name %></h1>
+
+<p>There is a new survey for you called
+  <% @survey.name %> for course <%= @course.name %>.</p>
+
+<p>Please take it before <%= @survey.end_date %></p>
+
+</body>
+</html>

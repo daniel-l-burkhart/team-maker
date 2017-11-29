@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Administrators</h1>
+
+<table class="table" style="text-align: center">
+  <thead>
+  <tr>
+    <th class="text-center">Name</th>
+    <th class="text-center">Phone</th>
+    <th class="text-center">Department</th>
+    <th class="text-center">University</th>
+    <th class="text-center">Password</th>
+    <th class="text-center" colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @administrators.each do |administrator| %>
+      <tr>
+        <td><%= administrator.name %></td>
+        <td><%= administrator.phone %></td>
+        <td><%= administrator.department %></td>
+        <td><%= administrator.university %></td>
+        <td><%= administrator.password %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+

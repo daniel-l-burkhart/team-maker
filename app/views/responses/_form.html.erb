@@ -1,0 +1,63 @@
+<%= form_for ([@survey, @response]) do |f| %>
+    <% if @response.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@response.errors.count, "error") %> prohibited this response from being saved:</h2>
+
+          <ul>
+            <% @response.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <table class="table">
+
+      <tr>
+        <td><%= @survey.gpa_question.content %></td>
+        <%= f.fields_for :answers, @response.answers.build(question_id: @survey.gpa_question.id) do |builder| %>
+            <td>
+              <%= builder.select :content, [['3.5 - 4.0', 'A'], ['2.5 - 3.4', 'B'], ['1.5 - 2.4', 'C'], ['0.5 - 1.4 ', 'D'], ['0.0 - 0.4 ', 'F']] %>
+              <%= builder.hidden_field :question_id %>
+            </td>
+        <% end %>
+      </tr>
+
+      <tr>
+        <td><b>Please enter your grades for the following courses:</b></td>
+        <td></td>
+      </tr>
+
+      <% @survey.questions.each do |question| %>
+          <% next if question.content == @survey.gpa_question.content || question.content == @survey.comments_question.content %>
+          <tr>
+            <td><%= question.content %></td>
+
+            <%= f.fields_for :answers, @response.answers.build(question_id: question.id) do |builder| %>
+                <td><%= builder.select :content, %w(A B C D F) %><%= builder.hidden_field :question_id %></td>
+            <% end %>
+          </tr>
+      <% end %>
+
+      <tr>
+        <td><b>Please enter any additional information regarding your team preferences:</b></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td><%= @survey.comments_question.content %></td>
+        <%= f.fields_for :answers, @response.answers.build(question_id: @survey.comments_question.id) do |builder| %>
+            <td>
+              <%= builder.text_area :content, cols: 50, rows: 5, class: 'textarea' %>
+              <%= builder.hidden_field :question_id %>
+            </td>
+        <% end %>
+      </tr>
+
+    </table>
+
+    <br/>
+
+    <%= f.submit 'Submit', class: 'btn btn-primary', style: 'float:right' %>
+
+<% end %>

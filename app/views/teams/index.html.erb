@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Teams</h1>
+
+<table class="table" style="text-align: center">
+  <thead>
+  <tr>
+    <th class="text-center">Survey</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @teams.each do |team| %>
+      <tr>
+        <td><%= team.survey %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
