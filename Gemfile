@@ -58,6 +58,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'autotest'
   gem 'autotest-standalone'
+  gem 'rails-erd'
 end
 
 group :test do

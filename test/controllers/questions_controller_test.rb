@@ -28,7 +28,7 @@ class QuestionsControllerTest < ActionController::TestCase
   end
 =end
 
-  test "should create question" do
+  test 'should create question' do
     assert_difference('Question.count') do
       post :create, question: {content: @question.content, survey_id: @question.survey_id}
     end
@@ -36,12 +36,12 @@ class QuestionsControllerTest < ActionController::TestCase
     assert_redirected_to question_path(assigns(:question))
   end
 
-  test "should update question" do
+  test 'should update question' do
     patch :update, id: @question, question: {content: @question.content, survey_id: @question.survey_id}
     assert_redirected_to question_path(assigns(:question))
   end
 
-  test "should destroy question" do
+  test 'should destroy question' do
     assert_difference('Question.count', -1) do
       delete :destroy, id: @question
     end

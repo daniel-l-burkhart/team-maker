@@ -6,25 +6,25 @@
         <%= f.hidden_field :reset_password_token %>
 
         <div class="form-group">
-          <%= f.label :password, "New password", class: "col-sm-2 control-label" %>
+          <%= f.label :password, 'New password', class: 'col-sm-2 control-label' %>
           <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> characters minimum)</em><br/>
           <% end %>
           <div class="col-sm-6">
-            <%= f.password_field :password, class: "form-control", autofocus: true, autocomplete: "off" %>
+            <%= f.password_field :password, class: 'form-control', autofocus: true, autocomplete: 'off' %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label :password_confirmation, "Confirm new password", class: "col-sm-2 control-label" %>
+          <%= f.label :password_confirmation, 'Confirm new password', class: 'col-sm-2 control-label' %>
           <div class="col-sm-6">
-            <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "off" %>
+            <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: 'off' %>
           </div>
         </div>
 
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-6">
-            <%= f.submit "Change my password", class: "btn btn-primary" %>
+            <%= f.submit 'Change my password', class: 'btn btn-primary' %>
           </div>
         </div>
 
@@ -32,7 +32,7 @@
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-6">
-        <%= render "administrators/shared/links" %>
+        <%= render 'administrators/shared/links' %>
       </div>
     </div>
 

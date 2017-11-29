@@ -87,7 +87,7 @@ RSpec.describe StudentsController, type: :controller do
 
       it "re-renders the 'new' template" do
         post :create, {:student => invalid_attributes}
-        expect(response).to render_template("new")
+        expect(response).to render_template('new')
       end
     end
   end
@@ -129,7 +129,7 @@ RSpec.describe StudentsController, type: :controller do
       it "re-renders the 'edit' template" do
         student = Student.create! valid_attributes
         put :update, {:id => student.to_param, :student => invalid_attributes}
-        expect(response).to render_template("edit")
+        expect(response).to render_template('edit')
       end
     end
   end

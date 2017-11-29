@@ -10,7 +10,7 @@ class WelcomeController < ApplicationController
   # Creates a new session
   ##
   def new
-    @session = Session.new("")
+    @session = Session.new('')
   end
 
   ##

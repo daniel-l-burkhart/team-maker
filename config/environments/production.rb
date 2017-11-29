@@ -66,7 +66,7 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = {host: 'capstoneteammaker.herokuapp.com'}
+  config.action_mailer.default_url_options = {host: 'daniel-team-maker.herokuapp.com'}
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
@@ -74,8 +74,8 @@ Rails.application.configure do
       address: 'smtp.gmail.com',
       port: 587,
       domain: 'gmail.com',
-      user_name: 'walkerburkhart.teammaker',
-      password: 'TeamMakerPass1234',
+      user_name: 'rorTeamMaker',
+      password: 'TeamMakerROR',
       authentication: :login,
       enable_starttls_auto: true}
 

@@ -5,15 +5,15 @@
     <%= devise_error_messages! %>
 
     <div class="form-group">
-      <%= f.label :email, class: "col-sm-2 control-label" %>
+      <%= f.label :email, class: 'col-sm-2 control-label' %>
       <div class="col-sm-6">
-        <%= f.email_field :email, class: "form-control", autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+        <%= f.email_field :email, class: 'form-control', autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
       </div>
 
     </div>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-6">
-        <%= f.submit "Resend Confirmation Instructions", class: "btn btn-primary" %>
+        <%= f.submit 'Resend Confirmation Instructions', class: 'btn btn-primary' %>
       </div>
     </div>
 
@@ -22,6 +22,6 @@
 
 <div class="form-group">
   <div class="col-sm-offset-2 col-sm-6">
-    <%= render "faculties/shared/links" %>
+    <%= render 'faculties/shared/links' %>
   </div>
 </div>

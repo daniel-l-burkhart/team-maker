@@ -2,6 +2,6 @@ FactoryGirl.define do
   factory :answer do
     response nil
     question nil
-    content "MyString"
+    content 'MyString'
   end
 end

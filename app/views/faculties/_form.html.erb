@@ -4,7 +4,7 @@
     <%= form_for(@faculty) do |f| %>
         <% if @faculty.errors.any? %>
             <div id="error_explanation">
-              <h2><%= pluralize(@faculty.errors.count, "error") %> prohibited this faculty from being saved:</h2>
+              <h2><%= pluralize(@faculty.errors.count, 'error') %> prohibited this faculty from being saved:</h2>
 
               <ul>
                 <% @faculty.errors.full_messages.each do |message| %>
@@ -15,46 +15,46 @@
         <% end %>
 
         <div class="form-group">
-          <%= f.label :name, class: "col-sm-2 control-label" %>
+          <%= f.label :name, class: 'col-sm-2 control-label' %>
           <div class="col-sm-6">
-            <%= f.text_field :name, class: "form-control", autofocus: true, :placeholder => "Name" %>
+            <%= f.text_field :name, class: 'form-control', autofocus: true, :placeholder => 'Name' %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label :phone, class: "col-sm-2 control-label" %>
+          <%= f.label :phone, class: 'col-sm-2 control-label' %>
           <div class="col-sm-6">
-            <%= f.text_field :phone, class: "form-control", autofocus: true, :placeholder => "Phone Number" %>
+            <%= f.text_field :phone, class: 'form-control', autofocus: true, :placeholder => 'Phone Number' %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label :department, class: "col-sm-2 control-label" %>
+          <%= f.label :department, class: 'col-sm-2 control-label' %>
           <div class="col-sm-6">
-            <%= f.text_field :department, class: "form-control", autofocus: true, :placeholder => "Department" %>
+            <%= f.text_field :department, class: 'form-control', autofocus: true, :placeholder => 'Department' %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label :university, class: "col-sm-2 control-label" %>
+          <%= f.label :university, class: 'col-sm-2 control-label' %>
           <div class="col-sm-6">
 
-            <%= f.text_field :university, class: "form-control", autofocus: true, :value => "University of West Georgia" %>
+            <%= f.text_field :university, class: 'form-control', autofocus: true, :value => 'University of West Georgia' %>
 
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label :email, class: "col-sm-2 control-label" %>
+          <%= f.label :email, class: 'col-sm-2 control-label' %>
           <div class="col-sm-6">
-            <%= f.email_field :email, class: "form-control", autofocus: true, :placeholder => "Email" %>
+            <%= f.email_field :email, class: 'form-control', autofocus: true, :placeholder => 'Email' %>
           </div>
         </div>
 
 
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-6">
-            <%= f.submit "Update Faculty", class: "btn btn-primary" %>
+            <%= f.submit 'Update Faculty', class: 'btn btn-primary' %>
           </div>
         </div>
 

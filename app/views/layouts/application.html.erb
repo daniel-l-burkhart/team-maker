@@ -29,26 +29,26 @@
     <nav>
       <ul class="nav navbar-nav navbar-center">
         <% if administrator_signed_in? %>
-            <li><%= link_to "Home", '/admin/home' %></li>
-            <li><%= link_to "About", about_path %></li>
+            <li><%= link_to 'Home', '/admin/home' %></li>
+            <li><%= link_to 'About', about_path %></li>
             <li><%= link_to 'Profile', edit_administrator_registration_path %></li>
 
 
         <% elsif faculty_signed_in? %>
-            <li><%= link_to "Home", '/faculty/home' %></li>
-            <li><%= link_to "About", about_path %></li>
+            <li><%= link_to 'Home', '/faculty/home' %></li>
+            <li><%= link_to 'About', about_path %></li>
             <li><%= link_to 'Profile', edit_faculty_registration_path %></li>
 
 
         <% elsif student_signed_in? %>
-            <li><%= link_to "Home", '/student/home' %></li>
-            <li><%= link_to "About", about_path %></li>
+            <li><%= link_to 'Home', '/student/home' %></li>
+            <li><%= link_to 'About', about_path %></li>
             <li><%= link_to 'Profile', edit_student_registration_path %></li>
 
 
         <% else %>
-            <li><%= link_to "Home", welcome_index_path %></li>
-            <li><%= link_to "About", about_path %></li>
+            <li><%= link_to 'Home', welcome_index_path %></li>
+            <li><%= link_to 'About', about_path %></li>
         <% end %>
       </ul>
 

@@ -4,15 +4,15 @@
     <%= devise_error_messages! %>
 
     <div class="form-group">
-      <%= f.label :email, class: "col-sm-2 control-label" %>
+      <%= f.label :email, class: 'col-sm-2 control-label' %>
       <div class="col-sm-6">
-        <%= f.email_field :email, class: "form-control", autofocus: true, :placeholder => "Email" %>
+        <%= f.email_field :email, class: 'form-control', autofocus: true, :placeholder => 'Email' %>
       </div>
     </div>
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-6">
-        <%= f.submit "Resend unlock instructions", class: "btn btn-primary" %>
+        <%= f.submit 'Resend unlock instructions', class: 'btn btn-primary' %>
       </div>
     </div>
 
@@ -20,6 +20,6 @@
 
 <div class="form-group">
   <div class="col-sm-offset-2 col-sm-6">
-    <%= render "students/shared/links" %>
+    <%= render 'students/shared/links' %>
   </div>
 </div>

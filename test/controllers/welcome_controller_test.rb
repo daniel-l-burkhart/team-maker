@@ -4,7 +4,7 @@ class WelcomeControllerTest < ActionController::TestCase
 
   include Devise::TestHelpers
 
-  test "should get index" do
+  test 'should get index' do
     get :index
     assert_response :success
   end

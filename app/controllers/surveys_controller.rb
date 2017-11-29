@@ -90,7 +90,6 @@ class SurveysController < ApplicationController
 
   def create_teams
 
-
     @survey = Survey.find(params[:survey_id])
 
     $teams = Array.new
@@ -161,7 +160,6 @@ class SurveysController < ApplicationController
 
     elsif preference == 'Dissimilar'
       create_teams_dissimilar(team_size)
-
     end
 
     @responses.each do |response|

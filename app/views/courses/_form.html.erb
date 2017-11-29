@@ -1,7 +1,7 @@
 <%= form_for @course, :html => {:multipart => true, class: 'form-horizontal'} do |f| %>
     <% if @course.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
+          <h2><%= pluralize(@course.errors.count, 'error') %> prohibited this course from being saved:</h2>
 
           <ul>
             <% @course.errors.full_messages.each do |message| %>
@@ -13,30 +13,30 @@
 
 
     <div class="form-group">
-      <%= f.label :name, class: "col-sm-2 control-label" %>
+      <%= f.label :name, class: 'col-sm-2 control-label' %>
       <div class="col-sm-6">
-        <%= f.text_field :name, class: "form-control", autofocus: true, :placeholder => "Name" %>
+        <%= f.text_field :name, class: 'form-control', autofocus: true, :placeholder => 'Name' %>
       </div>
     </div>
 
     <div class="form-group">
-      <%= f.label :semester, class: "col-sm-2 control-label" %>
+      <%= f.label :semester, class: 'col-sm-2 control-label' %>
       <div class="col-sm-6">
-        <%= f.text_field :semester, class: "form-control", :placeholder => "Semester" %>
+        <%= f.text_field :semester, class: 'form-control', :placeholder => 'Semester' %>
       </div>
     </div>
 
     <div class="form-group">
-      <%= f.label :section, class: "col-sm-2 control-label" %>
+      <%= f.label :section, class: 'col-sm-2 control-label' %>
       <div class="col-sm-6">
-        <%= f.text_field :section, class: "form-control", :placeholder => "Section" %>
+        <%= f.text_field :section, class: 'form-control', :placeholder => 'Section' %>
       </div>
     </div>
 
     <div class="form-group">
-      <%= f.label :file, "Student Data", class: "col-sm-2 control-label" %>
+      <%= f.label :file, 'Student Data', class: 'col-sm-2 control-label' %>
       <div class="col-sm-6">
-        <%= f.file_field :file, class: "form-control", accept: '.csv' %>
+        <%= f.file_field :file, class: 'form-control', accept: '.csv' %>
       </div>
     </div>
 
@@ -54,7 +54,7 @@
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-6">
-        <%= f.submit "Submit", class: "btn btn-primary" %>
+        <%= f.submit 'Submit', class: 'btn btn-primary' %>
       </div>
     </div>
 <% end %>

@@ -6,7 +6,7 @@
     <%= form_for(@faculty) do |f| %>
         <% if @faculty.errors.any? %>
             <div id="error_explanation">
-              <h2><%= pluralize(@faculty.errors.count, "error") %> prohibited this faculty from being saved:</h2>
+              <h2><%= pluralize(@faculty.errors.count, 'error') %> prohibited this faculty from being saved:</h2>
 
               <ul>
                 <% @faculty.errors.full_messages.each do |message| %>
@@ -44,7 +44,7 @@
 
         <br/>
         <div class="center">
-          <%= f.submit 'Update Faculty', class: "btn btn-primary actions", style: "color: #FFFFFFF" %>
+          <%= f.submit 'Update Faculty', class: 'btn btn-primary actions', style: 'color: #FFFFFFF' %>
         </div>
     <% end %>
   </div>
