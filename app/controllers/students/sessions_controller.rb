@@ -25,6 +25,6 @@ class Students::SessionsController < Devise::SessionsController
 
 
   def after_sign_in_path_for(resource)
-    '/faculty/home' # Or :prefix_to_your_route
+    '/student/home' # Or :prefix_to_your_route
   end
 end

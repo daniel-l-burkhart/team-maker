@@ -36,9 +36,11 @@ Rails.application.routes.draw do
     patch '/faculties/confirmation' => 'faculties/confirmations#update', :via => :patch, :as => :update_faculty_confirmation
   end
 
-  resources :students
   resources :courses do
 
+    resources :students do
+      get 'delete_student' => 'courses#delete_student_from_course'
+    end
 
     resources :surveys do
       get 'send_new_survey_mail' => 'courses#send_new_survey_mail'
@@ -74,11 +76,11 @@ Rails.application.routes.draw do
   get 'welcome/index'
   root 'welcome#index'
 
-  get 'student/home' => 'students#home'
-  get 'faculty/home' => 'faculties#home'
+  get 'student/home' => 'students#home', :as => :student_home
+  get 'faculty/home' => 'faculties#home', :as => :faculty_home
 
-  get 'admin/home' => 'administrators#home'
-  post 'admin/home' => 'administrators#home'
+  get 'admin/home' => 'administrators#home', :as => :admin_home
+  post 'admin/home' => 'administrators#home', :as => :admin_post_home
 
   get 'forgot_password' => 'welcome#forgot'
 

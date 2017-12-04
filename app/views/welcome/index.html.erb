@@ -1,29 +1,53 @@
-<div class="jumbotron center vertical-center">
-  <h1>Welcome to Team Maker!</h1>
+<% if administrator_signed_in? %>
 
-  <br/>
-  <div>
-    <h2>New Faculty Member?</h2>
-    <div class="col-lg-4">
-      <%= link_to 'Faculty Sign-up!', new_faculty_registration_path, :style => 'color:#FFFFFF;', :class => 'btn btn-primary' %>
-    </div>
-    <div class="col-lg-4">
-      <% link_to 'Admin Sign-up!', new_administrator_registration_path, :style => 'color:#FFFFFF;', :class => 'btn btn-primary' %>
-    </div>
-    <% #link_to 'Student Sign-up!', new_student_registration_path, :style => 'color:#FFFFFF;', :class => 'btn btn-primary'  %>
-    <br/><br/>
-  </div>
-  <h3>Already have an account? Sign in!</h3>
-  <div class="col-lg-4">
-    <%= link_to 'Admin Sign-in!', new_administrator_session_path, :style => 'color:#FFFFFF;', :class => 'btn btn-success' %>
-  </div>
-  <div class="col-lg-4">
-    <%= link_to 'Faculty Sign-in!', new_faculty_session_path, :style => 'color:#FFFFFF;', :class => 'btn btn-success' %>
-  </div>
+    <script>
+        window.location.href = "admin/home";
+    </script>
 
-  <div class="col-lg-4">
-    <%= link_to 'Student Sign-in!', new_student_session_path, :style => 'color:#FFFFFF;', :class => 'btn btn-success' %>
-  </div>
+<% elsif faculty_signed_in? %>
 
-  <br/><br/>
+    <script>
+        window.location.href = "faculty/home";
+    </script>
+
+<% elsif student_signed_in? %>
+
+    <script>
+        window.location.href = "student/home";
+    </script>
+
+<% else %>
+
+    <div class="jumbotron center vertical-center">
+      <h1>Welcome to Team Maker!</h1>
+
+      <br/>
+      <div>
+        <h2>New Faculty Member?</h2>
+        <div class="col-lg-12">
+          <%= link_to 'Faculty Sign-up!', new_faculty_registration_path, :style => 'color:#FFFFFF;', :class => 'btn btn-primary' %>
+        </div>
+        <% #link_to 'Student Sign-up!', new_student_registration_path, :style => 'color:#FFFFFF;', :class => 'btn btn-primary'  %>
+        <br/><br/>
+      </div>
+      <h3>Already have an account? Sign in!</h3>
+
+      <div class="row">
+        <div class="col">
+
+          <%= link_to 'Admin Sign-in!', new_administrator_session_path, :style => 'color:#FFFFFF;', :class => 'btn btn-success' %>
+        </div>
+        <div class="col">
+          <%= link_to 'Faculty Sign-in!', new_faculty_session_path, :style => 'color:#FFFFFF;', :class => 'btn btn-success' %>
+        </div>
+
+        <div class="col">
+          <%= link_to 'Student Sign-in!', new_student_session_path, :style => 'color:#FFFFFF;', :class => 'btn btn-success' %>
+        </div>
+
+      </div>
+
+      <br/><br/>
 </div>
+
+<% end %>

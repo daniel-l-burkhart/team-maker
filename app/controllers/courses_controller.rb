@@ -101,6 +101,13 @@ class CoursesController < ApplicationController
 
   end
 
+  def delete_student_from_course
+
+    student = Student.find(params[:student_id])
+    course = Course.find(params[:course_id])
+    course.delete_student(student)
+
+  end
 
   private
   # Use callbacks to share common setup or constraints between actions.
@@ -116,6 +123,7 @@ class CoursesController < ApplicationController
   def parse_students(file)
     @course.parse_students(file)
   end
+
 
   def student_is_not_blank?
     return false if params[:course][:student].nil?

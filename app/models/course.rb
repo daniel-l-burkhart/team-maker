@@ -12,6 +12,18 @@ class Course < ActiveRecord::Base
   validates :semester, presence: true
   validates :section, presence: true
 
+  def delete_student(student)
+
+    self.surveys.each do |survey|
+      survey.students.delete(student)
+    end
+
+    self.students.delete(student)
+
+    redirect_to 'welcome/index'
+
+  end
+
   ##
   # Parses students out of CSV file
   ##

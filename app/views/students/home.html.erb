@@ -13,7 +13,9 @@
     </tr>
 
     <% @student.surveys.each_with_index do |survey, i| %>
-        <% response = @student.responses(survey_id: survey.id)[i] %>
+
+        <% response = @student.responses.where(:survey_id => survey.id)[i] %>
+
         <% next if (survey.start_date.nil?) %>
         <% next if (survey.end_date <= DateTime.now) %>
         <tr>

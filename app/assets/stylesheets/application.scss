@@ -1,0 +1,143 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ */
+.center {
+  text-align: center;
+}
+
+.white {
+  color: #FFFFFF;
+}
+
+/* User sign in and sign forms. */
+.border-form-div {
+  max-width: 300px;
+  padding: 19px 29px 29px;
+  margin: 0 auto 20px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+}
+
+.border-form-div .form-signin-heading,
+.border-form-div .checkbox {
+  margin-bottom: 10px;
+}
+
+.border-form-div input[type="text"],
+.border-form-div input[type="email"],
+.border-form-div input[type="password"] {
+  font-size: 16px;
+  height: auto;
+  margin-bottom: 15px;
+  padding: 7px 9px;
+}
+
+.log-in {
+  width: 700px;
+  margin: auto;
+  text-align: center;
+  padding-top: 10%;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+.panel-heading {
+  background-color: #fff;
+}
+
+.form-control {
+  width: 500px;
+  text-align: center;
+  margin: auto;
+}
+
+.panel-body p {
+  color: #555;
+}
+
+.table td, th, tr {
+  text-align: center;
+}
+
+th {
+  text-align: center;
+}
+
+th {
+
+}
+
+@import "bootstrap";
+
+//.bg-faded {
+//  background-color: #f7f7f7
+//}
+//
+//.bg-primary {
+//  background-color: #0275d8!important
+//}
+//
+//a.bg-primary:focus,
+//a.bg-primary:hover {
+//  background-color: #025aa5!important
+//}
+//
+//.bg-success {
+//  background-color: #5cb85c!important
+//}
+//
+//a.bg-success:focus,
+//a.bg-success:hover {
+//  background-color: #449d44!important
+//}
+//
+//.bg-info {
+//  background-color: #5bc0de!important
+//}
+//
+//a.bg-info:focus,
+//a.bg-info:hover {
+//  background-color: #31b0d5!important
+//}
+//
+//.bg-warning {
+//  background-color: #f0ad4e!important
+//}
+//
+//a.bg-warning:focus,
+//a.bg-warning:hover {
+//  background-color: #ec971f!important
+//}
+//
+//.bg-danger {
+//  background-color: #d9534f!important
+//}
+//
+//a.bg-danger:focus,
+//a.bg-danger:hover {
+//  background-color: #c9302c!important
+//}
+//
+//.bg-inverse {
+//  background-color: #292b2c!important
+//}
+//
+//a.bg-inverse:focus,
+//a.bg-inverse:hover {
+//  background-color: #101112!important
+//}

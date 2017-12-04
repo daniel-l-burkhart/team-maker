@@ -2,17 +2,17 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
-# Use sqlite3 as the database for Active Record
-#gem 'sqlite3'
+
+gem 'sprockets-rails', :require => 'sprockets/railtie'
 
 gem 'pg'
-
 gem 'devise'
-
 gem 'rdoc'
 
-# Use SCSS for stylesheets
-gem 'sass-rails'
+#gem 'sass-rails'
+
+gem 'bootstrap', '~> 4.0.0.beta2.1'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
 # Use CoffeeScript for .coffee assets and views
@@ -31,7 +31,8 @@ gem 'jbuilder'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', group: :doc
 
-gem 'bootstrap-sass'
+# gem 'bootstrap'
+# gem 'bootstrap-sass'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt'

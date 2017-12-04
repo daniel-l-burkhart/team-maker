@@ -1,29 +1,21 @@
-<!--<header class="navbar navbar-inverse">-->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom">
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">Team Maker!</a>
-    </div>
-
-    <ul class="navbar-nav navbar-right">
+  <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExampleCenteredNav">
+    <ul class="navbar-nav">
       <% if administrator_signed_in? %>
           <li class="nav-item"><%= link_to 'Home', '/admin/home', class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'About', about_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'Profile', edit_administrator_registration_path, class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to 'Log out', destroy_administrator_session_path, class: 'nav-link' %></li>
 
       <% elsif faculty_signed_in? %>
           <li class="nav-item"><%= link_to 'Home', '/faculty/home', class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'About', about_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'Profile', edit_faculty_registration_path, class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to 'Log out', destroy_faculty_session_path, class: 'nav-link' %></li>
 
       <% elsif student_signed_in? %>
           <li class="nav-item"><%= link_to 'Home', '/student/home', class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'About', about_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'Profile', edit_student_registration_path, class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to 'Log out', destroy_student_session_path, class: 'nav-link' %></li>
 
       <% else %>
           <li class="nav-item"><%= link_to 'Home', welcome_index_path, class: 'nav-link' %></li>
@@ -32,5 +24,3 @@
     </ul>
   </div>
 </nav>
-
-
